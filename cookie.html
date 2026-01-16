@@ -195,8 +195,101 @@
 </section><section style="background-color: #fff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; color:#aaa; font-size:12px; padding: 0; align-items: center; display: flex;"><a href="https://mobirise.site/i" style="flex: 1 1; height: 3rem; padding-left: 1rem;"></a><p style="flex: 0 0 auto; margin:0; padding-right:1rem;"><a href="https://mobirise.site/c" style="color:#aaa;">The</a> web page was created with Mobirise</p></section><script src="assets/popper/popper.min.js"></script>  <script src="assets/web/assets/jquery/jquery.min.js"></script>  <script src="assets/bootstrap/js/bootstrap.min.js"></script>  <script src="assets/web/assets/cookies-alert-plugin/cookies-alert-core.js"></script>  <script src="assets/web/assets/cookies-alert-plugin/cookies-alert-script.js"></script>  <script src="assets/tether/tether.min.js"></script>  <script src="assets/smoothscroll/smooth-scroll.js"></script>  <script src="assets/viewportchecker/jquery.viewportchecker.js"></script>  <script src="assets/dropdown/js/nav-dropdown.js"></script>  <script src="assets/dropdown/js/navbar-dropdown.js"></script>  <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>  <script src="assets/theme/js/script.js"></script>  
   
   
-<div id="cookie-dialog" style="display: none;"><div id="cookiesdirective"><div style="position: fixed; top: 0; right: 0; bottom: 0; left: 0; background-color: rgb(0, 0, 0); opacity: 0.36; z-index: 9999;"></div><div style="position: fixed; top: 0; right: 0; bottom: 0; left: 0; display: flex; align-items: center; z-index: 10000"><div class="cookie-wrapper" style="position: relative; width: 100%; max-width: 500px; margin-right: auto; margin-left: auto; padding: 1rem; text-align: center; border-radius: .3rem; box-shadow: 0 10px 40px 0 rgba(0,0,0,0.2); color:#424a4d; background:rgba(204, 204, 204, 0.96);"><div class="mbr-text"><p class="display-7">Usamos cookies para brindarle la mejor experiencia. Lea nuestra <a style='color: #424a4d; text-decoration: underline;' href='cookie.html'>política de cookies</a>.</p></div><div class="mbr-section-btn"><a style="margin:0;;" class="btn btn-sm btn-primary display-7" id="impliedsubmit">Aceptar</a></div></div></div></div></div>
-  <input name="cookieData" type="hidden" data-cookie-customDialogSelector='#cookie-dialog' data-cookie-colorText='#424a4d' data-cookie-colorBg='rgba(204, 204, 204, 0.96)' data-cookie-textButton='Aceptar' data-cookie-colorButton='' data-cookie-colorLink='#424a4d' data-cookie-underlineLink='true' data-cookie-text="Usamos cookies para brindarle la mejor experiencia. Lea nuestra <a href='cookie.html'>política de cookies</a>.">
-    <input name="animation" type="hidden">
-  </body>
+</section>
+
+<section style="background-color: #fff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; color:#aaa; font-size:12px; padding: 0; align-items: center; display: flex;">
+  <a href="https://mobirise.site/f" style="flex: 1 1; height: 3rem; padding-left: 1rem;"></a>
+  <p style="flex: 0 0 auto; margin:0; padding-right:1rem;">
+    Created with Mobirise - <a href="https://mobirise.site/l" style="color:#aaa;">Learn more</a>
+  </p>
+</section>
+
+<script src="assets/popper/popper.min.js"></script>
+<script src="assets/web/assets/jquery/jquery.min.js"></script>
+<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script src="assets/tether/tether.min.js"></script>
+<script src="assets/smoothscroll/smooth-scroll.js"></script>
+<script src="assets/viewportchecker/jquery.viewportchecker.js"></script>
+<script src="assets/dropdown/js/nav-dropdown.js"></script>
+<script src="assets/dropdown/js/navbar-dropdown.js"></script>
+<script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
+<script src="assets/masonry/masonry.pkgd.min.js"></script>
+<script src="assets/imagesloaded/imagesloaded.pkgd.min.js"></script>
+<script src="assets/bootstrapcarouselswipe/bootstrap-carousel-swipe.js"></script>
+<script src="assets/vimeoplayer/jquery.mb.vimeo_player.js"></script>
+<script src="assets/theme/js/script.js"></script>
+<script src="assets/gallery/player.min.js"></script>
+<script src="assets/gallery/script.js"></script>
+<script src="assets/slidervideo/script.js"></script>
+
+<!-- BANNER DE COOKIES RGPD -->
+<div id="cookie-banner" class="cookie-banner">
+  <p>
+    Utilizamos cookies propias y de terceros para el correcto funcionamiento del sitio
+    y, en su caso, para analizar la navegación.
+    <a href="cookie.html" target="_blank">Más información</a>
+  </p>
+  <div class="cookie-buttons">
+    <button id="acceptCookies">Aceptar</button>
+    <button id="rejectCookies">Rechazar</button>
+  </div>
+</div>
+
+<style>
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #222;
+  color: #fff;
+  padding: 15px;
+  display: none;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 9999;
+}
+
+.cookie-banner a {
+  color: #4fc3f7;
+  text-decoration: underline;
+}
+
+.cookie-buttons button {
+  margin-left: 10px;
+  padding: 8px 14px;
+  border: none;
+  cursor: pointer;
+}
+
+#acceptCookies {
+  background-color: #4caf50;
+  color: white;
+}
+
+#rejectCookies {
+  background-color: #f44336;
+  color: white;
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  if (!localStorage.getItem("cookieConsent")) {
+    document.getElementById("cookie-banner").style.display = "flex";
+  }
+
+  document.getElementById("acceptCookies").onclick = function () {
+    localStorage.setItem("cookieConsent", "accepted");
+    document.getElementById("cookie-banner").style.display = "none";
+  };
+
+  document.getElementById("rejectCookies").onclick = function () {
+    localStorage.setItem("cookieConsent", "rejected");
+    document.getElementById("cookie-banner").style.display = "none";
+  };
+});
+</script>
+
+</body>
 </html>
