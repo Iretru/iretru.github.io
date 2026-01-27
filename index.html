@@ -297,7 +297,7 @@
             </div>
         </div>
     </div>
-</section><section style="background-color: #fff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; color:#aaa; font-size:12px; padding: 0; align-items: center; display: flex;"><a href="https://mobirise.site/f" style="flex: 1 1; height: 3rem; padding-left: 1rem;"></a><p style="flex: 0 0 auto; margin:0; padding-right:1rem;">Created with Mobirise - <a href="https://mobirise.site/l" style="color:#aaa;">Learn more</a></p></section><script src="assets/popper/popper.min.js"></script>  <script src="assets/web/assets/jquery/jquery.min.js"></script>  <script src="assets/bootstrap/js/bootstrap.min.js"></script>  <script src="assets/web/assets/cookies-alert-plugin/cookies-alert-core.js"></script>  <script src="assets/web/assets/cookies-alert-plugin/cookies-alert-script.js"></script>  <script src="assets/tether/tether.min.js"></script>  <script src="assets/smoothscroll/smooth-scroll.js"></script>  <script src="assets/viewportchecker/jquery.viewportchecker.js"></script>  <script src="assets/dropdown/js/nav-dropdown.js"></script>  <script src="assets/dropdown/js/navbar-dropdown.js"></script>  <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>  <script src="assets/masonry/masonry.pkgd.min.js"></script>  <script src="assets/imagesloaded/imagesloaded.pkgd.min.js"></script>  <script src="assets/bootstrapcarouselswipe/bootstrap-carousel-swipe.js"></script>  <script src="assets/vimeoplayer/jquery.mb.vimeo_player.js"></script>  <script src="assets/theme/js/script.js"></script>  <script src="assets/gallery/player.min.js"></script>  <script src="assets/gallery/script.js"></script>  <script src="assets/slidervideo/script.js"></script>  
+</section><section style="background-color: #fff; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif; color:#aaa; font-size:12px; padding: 0; align-items: center; display: flex;"><a href="https://mobirise.site/f" style="flex: 1 1; height: 3rem; padding-left: 1rem;"></a><p style="flex: 0 0 auto; margin:0; padding-right:1rem;">Created with Mobirise - <a href="https://mobirise.site/l" style="color:#aaa;">Learn more</a></p></section><script src="assets/popper/popper.min.js"></script>  <script src="assets/web/assets/jquery/jquery.min.js"></script>  <script src="assets/bootstrap/js/bootstrap.min.js"></script>  <script src="assets/web/assets/cookies-alert-plugin/cookies-alert-core.js"></script>  <script src="assets/web/assets/cookies-alert-plugin/cookies-alert-script.js"></script>  <script src="assets/tether/tether.min.js"></script>  <script src="assets/smoothscroll/smooth-scroll.js"></script>  <script src="assets/viewportchecker/jquery.viewportchecker.js"></script>  <script src="assets/dropdown/js/nav-dropdown.js"></script>  <script src="assets/dropdown/js/navbar-dropdown.js"></script>  <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>  <script src="assets/masonry/masonry.pkgd.min.js"></script>  <script src="assets/imagesloaded/imagesloaded.pkgd.min.js"></script>  <script src="assets/bootstrapcarouselswipe/bootstrap-carousel-swipe.js"></script> <script src="assets/theme/js/script.js"></script>  <script src="assets/gallery/player.min.js"></script>  <script src="assets/gallery/script.js"></script>  <script src="assets/slidervideo/script.js"></script>  
   
   
 </section>
@@ -330,9 +330,10 @@
 <!-- BANNER DE COOKIES RGPD -->
 <div id="cookie-banner" class="cookie-banner">
   <p>
-    Utilizamos cookies propias y de terceros para el correcto funcionamiento del sitio
-    y, en su caso, para analizar la navegación.
-    <a href="cookie.html" target="_blank">Más información</a>
+    Utilizamos cookies propias y de terceros para el correcto funcionamiento del sitio web
+y, si lo aceptas, para analizar la navegación y mostrar contenidos multimedia.
+Puedes aceptar o rechazar el uso de cookies no necesarias.
+<a href="cookie.html" target="_blank">Más información</a>
   </p>
   <div class="cookie-buttons">
     <button id="acceptCookies">Aceptar</button>
@@ -377,13 +378,31 @@
 </style>
 
 <script>
+function loadThirdPartyCookies() {
+  if (window.thirdPartyLoaded) return; // evita cargas duplicadas
+  window.thirdPartyLoaded = true;
+
+  var s = document.createElement("script");
+  s.src = "assets/vimeoplayer/jquery.mb.vimeo_player.js";
+  document.body.appendChild(s);
+}
+
 document.addEventListener("DOMContentLoaded", function () {
-  if (!localStorage.getItem("cookieConsent")) {
+  const consent = localStorage.getItem("cookieConsent");
+
+  // Mostrar banner solo si no hay decisión previa
+  if (!consent) {
     document.getElementById("cookie-banner").style.display = "flex";
+  }
+
+  // Si ya aceptó en visitas anteriores, carga scripts
+  if (consent === "accepted") {
+    loadThirdPartyCookies();
   }
 
   document.getElementById("acceptCookies").onclick = function () {
     localStorage.setItem("cookieConsent", "accepted");
+    loadThirdPartyCookies();
     document.getElementById("cookie-banner").style.display = "none";
   };
 
@@ -393,6 +412,7 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 });
 </script>
+
 
 </body>
 </html>
