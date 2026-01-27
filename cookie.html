@@ -288,9 +288,10 @@ La desactivación de cookies puede afectar al correcto funcionamiento de algunas
 <!-- BANNER DE COOKIES RGPD -->
 <div id="cookie-banner" class="cookie-banner">
   <p>
-    Utilizamos cookies propias y de terceros para el correcto funcionamiento del sitio
-    y, en su caso, para analizar la navegación.
-    <a href="cookie.html" target="_blank">Más información</a>
+    Utilizamos cookies propias y de terceros para el correcto funcionamiento del sitio web
+y, si lo aceptas, para analizar la navegación y mostrar contenidos multimedia.
+Puedes aceptar o rechazar el uso de cookies no necesarias.
+<a href="cookie.html" target="_blank">Más información</a>
   </p>
   <div class="cookie-buttons">
     <button id="acceptCookies">Aceptar</button>
@@ -320,30 +321,46 @@ La desactivación de cookies puede afectar al correcto funcionamiento de algunas
 
 .cookie-buttons button {
   margin-left: 10px;
-  padding: 8px 14px;
+  padding: 8px 16px;
   border: none;
   cursor: pointer;
+  background-color: #4caf50; /* MISMO COLOR */
+  color: white;
+  border-radius: 4px;
+  font-size: 14px;
 }
 
-#acceptCookies {
-  background-color: #4caf50;
-  color: white;
-}
-
-#rejectCookies {
-  background-color: #f44336;
-  color: white;
+.cookie-buttons button:hover {
+  opacity: 0.85;
 }
 </style>
 
 <script>
+function loadThirdPartyCookies() {
+  if (window.thirdPartyLoaded) return; // evita cargas duplicadas
+  window.thirdPartyLoaded = true;
+
+  var s = document.createElement("script");
+  s.src = "assets/vimeoplayer/jquery.mb.vimeo_player.js";
+  document.body.appendChild(s);
+}
+
 document.addEventListener("DOMContentLoaded", function () {
-  if (!localStorage.getItem("cookieConsent")) {
+  const consent = localStorage.getItem("cookieConsent");
+
+  // Mostrar banner solo si no hay decisión previa
+  if (!consent) {
     document.getElementById("cookie-banner").style.display = "flex";
+  }
+
+  // Si ya aceptó en visitas anteriores, carga scripts
+  if (consent === "accepted") {
+    loadThirdPartyCookies();
   }
 
   document.getElementById("acceptCookies").onclick = function () {
     localStorage.setItem("cookieConsent", "accepted");
+    loadThirdPartyCookies();
     document.getElementById("cookie-banner").style.display = "none";
   };
 
@@ -353,6 +370,5 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 });
 </script>
-
 </body>
 </html>
