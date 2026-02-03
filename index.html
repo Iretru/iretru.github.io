@@ -284,22 +284,20 @@
     </div>
 </section>
 
+<!-- FOOTER CORPORATIVO (Mobirise) -->
 <section once="footers" class="cid-sHGzxVFnTy" id="footer6-1u">
-
-    
-
-    
-
-    <div class="container">
-        <div class="media-container-row align-center mbr-white">
-            <div class="col-12">
-                <p class="mbr-text mb-0 mbr-fonts-style display-4">Inscrito en el Registro Mercantil de BIZKAIA, Tomo 649, Folio 109, Hoja  BI-8966, Inscripción 3, Fecha 16 de julio de 1998.&nbsp; &nbsp; © iretru S.L. 2019 - All Rights Reserved</p>
-            </div>
-        </div>
+  <div class="container">
+    <div class="media-container-row align-center mbr-white">
+      <div class="col-12">
+        <p class="mbr-text mb-0 mbr-fonts-style display-4">
+          Inscrito en el Registro Mercantil de BIZKAIA, Tomo 649, Folio 109, Hoja BI-8966, Inscripción 3, Fecha 16 de julio de 1998. © IRETRU S.L. 2019 - All Rights Reserved
+        </p>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
 
-<!-- FOOTER LIMPIO SIN PUBLICIDAD DE MOBIRISE -->
+<!-- FOOTER LIMPIO SIN PUBLICIDAD -->
 <section style="background-color:#fff;
                  font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
                  color:#aaa; font-size:12px; padding:0.5rem 1rem;
@@ -328,17 +326,14 @@
 <script src="assets/gallery/script.js"></script>
 <script src="assets/slidervideo/script.js"></script>
 
-  
-  
+<!-- AVISO DE COOKIES -->
 <div id="cookie-dialog" style="display: none;">
   <div id="cookiesdirective">
 
-    <!-- Fondo oscuro -->
     <div style="position: fixed; top: 0; right: 0; bottom: 0; left: 0;
                 background-color: rgb(0, 0, 0); opacity: 0.36; z-index: 9999;">
     </div>
 
-    <!-- Contenedor del aviso -->
     <div style="position: fixed; top: 0; right: 0; bottom: 0; left: 0;
                 display: flex; align-items: center; z-index: 10000;">
       <div class="cookie-wrapper"
@@ -358,7 +353,6 @@
           </p>
         </div>
 
-        <!-- Botones -->
         <div class="mbr-section-btn" style="display:flex; gap:10px; justify-content:center; margin-top:10px;">
           <a class="btn btn-sm btn-primary display-7" id="accept-btn" style="min-width:120px;">Aceptar</a>
           <a class="btn btn-sm btn-primary display-7" id="reject-btn" style="min-width:120px;">Rechazar</a>
@@ -371,23 +365,19 @@
 </div>
 
 <script>
-  // Mostrar el cuadro solo si NO ha aceptado antes
   if (localStorage.getItem("cookie-consent") !== "accepted") {
     document.getElementById("cookie-dialog").style.display = "block";
   }
 
-  // Botón Aceptar → guardar decisión y no mostrar más
   document.getElementById("accept-btn").onclick = function() {
     localStorage.setItem("cookie-consent", "accepted");
     document.getElementById("cookie-dialog").style.display = "none";
   };
 
-  // Botón Rechazar → cerrar pero NO guardar nada
   document.getElementById("reject-btn").onclick = function() {
     document.getElementById("cookie-dialog").style.display = "none";
   };
 </script>
 
-
-  </body>
+</body>
 </html>
