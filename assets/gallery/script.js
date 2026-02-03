@@ -196,4 +196,92 @@ if (k)
         m(a);
     });
 
-b(document).on("add.cards changeParameter.cards",
+b(document).on("add.cards changeParameter.cards", function(a){
+    var c = b(a.target), e = [];
+
+    c.find(".mbr-gallery-item").each(function(a){
+        (b(this).attr("data-tags") || "")
+            .trim()
+            .split(",")
+            .map(function(a){
+                a = a.trim();
+                -1 === b.inArray(a, e) && e.push(a);
+            });
+    });
+
+    if (0 < c.find(".mbr-gallery-filter").length &&
+        b(a.target).find(".mbr-gallery-filter").hasClass("gallery-filter-active"))
+    {
+        var d = "";
+        c.find(".mbr-gallery-filter ul li:not(.mbr-gallery-filter-all)").remove();
+
+        var f = c.find(".mbr-gallery-filter .mbr-gallery-filter-all").clone();
+        f.find("a").removeClass("active");
+
+        e.map(function(a){
+            f.find("a").length ? f.find("a").text(a) : f.text(a);
+            d += "<li>" + f.html() + "</li>";
+        });
+
+        f.remove();
+        c.find(".mbr-gallery-filter ul").append(d);
+    }
+
+    m(a);
+});
+
+b(document).on("change.cards", function(a){ m(a); });
+
+b(document).on("lazyload", function(a){
+    m(a);
+    b(window).scrollEnd(function(){ m(a); }, 250);
+});
+
+b(".mbr-gallery-item").on("click", "a", function(a){
+    a.stopPropagation();
+});
+
+var x, u, h, k = b(document).find(".mbr-gallery");
+
+k.on("show.bs.modal", function(a){
+    clearTimeout(x);
+    x = setTimeout(function(){
+        var c = b(a.relatedTarget).parent().attr("data-video-num");
+        c = b(a.target).find(".carousel-item .mbr-background-video[data-video-num="+c+"]");
+
+        b(a.target).find(".carousel-item .mbr-background-video");
+
+        0 < c.length &&
+        c.closest(".carousel-item").hasClass("active") &&
+        (c = n[+c.attr("data-video-num")],
+         c.playVideo ? c.playVideo() : c.play());
+    }, 500);
+
+    h = b(a.target);
+    t();
+});
+
+k.on("slide.bs.carousel", function(a){
+    a = b(a.target).find(".carousel-item.active .mbr-background-video");
+    0 < a.length &&
+    (a = n[+a.attr("data-video-num")],
+     a.pauseVideo ? a.pauseVideo() : a.pause());
+});
+
+b(window).on("resize load", t);
+
+k.on("slid.bs.carousel", function(a){
+    a = b(a.target).find(".carousel-item.active .mbr-background-video");
+    0 < a.length &&
+    (a = n[+a.attr("data-video-num")],
+     a.playVideo ? a.playVideo() : a.play());
+});
+
+k.on("hide.bs.modal", function(a){
+    n.map(function(a,b){
+        a.pauseVideo ? a.pauseVideo() : a.pause();
+    });
+    h = null;
+});
+
+})(jQuery);
