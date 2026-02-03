@@ -341,24 +341,23 @@
 </div>
 
 <script>
-  // Mostrar el cuadro al cargar la página
-  document.getElementById("cookie-dialog").style.display = "block";
-
-  // Función para cerrar el cuadro sin hacer nada más
-  function closeCookieDialog() {
-    document.getElementById("cookie-dialog").style.display = "none";
+  // Mostrar el cuadro solo si NO ha aceptado antes
+  if (localStorage.getItem("cookie-consent") !== "accepted") {
+    document.getElementById("cookie-dialog").style.display = "block";
   }
 
-  // Botón Aceptar
+  // Botón Aceptar → guardar decisión y no mostrar más
   document.getElementById("accept-btn").onclick = function() {
-    closeCookieDialog();
+    localStorage.setItem("cookie-consent", "accepted");
+    document.getElementById("cookie-dialog").style.display = "none";
   };
 
-  // Botón Rechazar (hace exactamente lo mismo)
+  // Botón Rechazar → cerrar pero NO guardar nada
   document.getElementById("reject-btn").onclick = function() {
-    closeCookieDialog();
+    document.getElementById("cookie-dialog").style.display = "none";
   };
 </script>
+
 
   </body>
 </html>
